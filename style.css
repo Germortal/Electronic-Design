@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background-color:  #201c44;
+}
+body {
+    background-color:#BCDBFA;
+    border: 2px solid violet;
+    margin: 10px;
+    padding: 10px;
+}
+h1{
+    text-align:center;
+    font-family:"magneto";
+    font-size:50px;
+    color:DodgerBlue;
+}
+section{
+    display: flex;
+    flex-wrap: wrap;
+}
+nav {
+    float: left;
+    width: 50%;
+    height: auto; /* only for demonstration, should be removed */
+    background: #f1f1f1;
+    padding: 20px;
+  }
+  
+  /* Style the list inside the menu */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  article {
+    float: left;
+    padding: 20px;
+    width: 50%;
+    background-color:#1c1c44 ;
+    height: auto; /* only for demonstration, should be removed */
+  }
+  /* Clear floats after the columns */
+  section{
+    border: solid blue 1px;
+    margin-top: 15px;
+  }
+  section::after {
+    content: "";
+    display: table;
+    clear: both;
+    
+  }
+  footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    width: auto;
+    height: auto;
+  }
