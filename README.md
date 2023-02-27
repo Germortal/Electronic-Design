@@ -6,4 +6,5 @@ HERE YOU WILL FIND A PAGE WITH INFORMATION ABOUT THE APPLICATION WE DEVELOPED AN
 THIS APP MIGHT BE UPDATED IN THE FUTURE, MAKING IT POSSIBLE TO SELECT THE TYPE OF CONTROLLER AND ALSO THE TRANSFER FUNCTION.
 
 made for the course Mobile application development - Southcolombian University - Ing. Julián Molina
-/nby: Germán Montenegro and Daniel Torres
+
+by: Germán Montenegro and Daniel Torres
