@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>7-segment display driver encoder</title>
+        <title>Pid</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
@@ -13,33 +13,98 @@
     <header>
       <div class="logo">
         <hr>
-        <h1>7-segment display driver encoder</h1>
-        <div class="container">
-          <div class="color-select">&emsp;&nbsp;&nbsp;&nbsp;
-            <div id="red"></div>
-            <div id="blue"></div>
-            <div id="black"></div>
-            <div id="white"></div>
-            <div id="brown"></div>
-          </div>
-        </div>
+        <h1>Visualizador de control PID - Planta de temperatura</h1>
+
         <hr>
       </div>
     </header>
 <!------------------------------------------------------------------------------------------------------------------------------------------------>
     <body class="home">
         <hr>
-        <p>This was made for the course Mobile application development - Southcolombian University </p>
+        <p>Conociendo un sistema PID </p>
         <hr>
         <section>
             <nav>
+              <div class="container">
+                <div class="color-select">
+                  <h2>Planta Implementada</h2>
+                  <div id="one"><h3>Diagrama de bloques</h3><br>
+                    <center> <img src="./Planta.png" size="auto" /> </center>
+                  </div>
+                  <div id="two"><h3>QUE ES?</h3>
+                   <p align="justify">Un controlador PID (controlador proporcional, integral y derivativo) es un mecanismo de control que a 
+                    través de un lazo de retroalimentación permite regular la velocidad, temperatura, presión y flujo entre otras variables 
+                    de un proceso en general. El controlador PID calcula la diferencia entre nuestra variable real contra la variable deseada.<br><br>
+                    El algoritmo del control PID consta de tres parámetros distintos: el proporcional, el integral, y el derivativo. 
+                    El valor proporcional depende del error actual, el integral depende de los errores pasados y el derivativo es una 
+                    predicción de los errores futuros. La suma de estas tres acciones es usada para ajustar el proceso por medio de un elemento de control.
+                  </p></div>
+                  <div id="three"><h3>Funcionamiento:</h3>
+                    <p align="justify">
+                      Para el correcto funcionamiento de un controlador PID que regule un proceso o sistema se necesita, al menos:<br>
+                        <ul>
+                          <li type= disc>Un sensor, que determine el estado del sistema (termómetro, caudalímetro, manómetro, etc).
+                          <li type= disc>Un controlador, que genere la señal que gobierna al actuador.
+                          <li type= disc>Un actuador, que modifique al sistema de manera controlada (resistencia eléctrica, motor, válvula, bomba, etc).<br><br>
+                        </ul>
+                    </p>
+                    <p align="justify">
+                      El sensor proporciona una señal analógica o digital al controlador, la cual representa el punto actual en el que se encuentra el 
+                      proceso o sistema. La señal puede representar ese valor en tensión eléctrica, intensidad de corriente eléctrica o frecuencia. 
+                      En este último caso la señal es de corriente alterna, a diferencia de los dos anteriores, que también pueden ser con corriente continua.<br><br>
+
+                      El controlador recibe una señal externa que representa el valor que se desea alcanzar. Esta señal recibe el nombre de punto de consigna 
+                      (o punto de referencia, valor deseado o setpoint), la cual es de la misma naturaleza y tiene el mismo rango de valores que la señal que proporciona el sensor.
+                      Para hacer posible esta compatibilidad y que, a su vez, la señal pueda ser entendida por un humano, habrá que establecer algún tipo de interfaz 
+                      (HMI-Human Machine Interface).<br>
+                      El controlador resta la señal de punto actual a la señal de punto de consigna, obteniendo así la señal de error, que determina en cada 
+                      instante la diferencia que hay entre el valor deseado (consigna) y el valor medido. La señal de error es utilizada por cada uno de los 
+                      3 componentes del controlador PID. Las 3 señales sumadas, componen la señal de salida que el controlador va a utilizar para gobernar 
+                      al actuador. La señal resultante de la suma de estas tres se llama variable manipulada y no se aplica directamente sobre el actuador, 
+                      sino que debe ser transformada para ser compatible con el actuador utilizado.<br><br>
+
+                     .<br><br>
+
+                      </div>
+                  <div id="four"><h3></h3></div>
+                  <div id="five"><h2></h2></div>
+                </div>
+              </div>
             </nav>
             <article>
+              <h4 class="h4w"  align="justify"></p>
+              Las tres componentes de un controlador PID son: parte Proporcional, acción Integral y acción Derivativa. El peso de la influencia que cada 
+              una de estas partes tiene en la suma final viene dado por la constante proporcional, el tiempo integral y el tiempo derivativo, 
+              respectivamente. Se pretenderá lograr que el bucle de control corrija eficazmente y en el mínimo tiempo posible los efectos de las 
+              perturbaciones
+              Tomando en cuenta la lectura, ahora veremos como se comportaria una planta de temperatura 
+              controlada con PID, cuya función de transferencia es de primer orden:<br><br>
+              </h4>
+              <center> <img src="./funcion.jpg" size="auto" /> </center><br>
+              <h4 class="h4w"  align="justify"></p>Variaremos tanto Kp, Ki y Kd de nuestra planta de temperatura y también el SetPoint que 
+                utilicemos, de este modo sera posible apreciar como se comportan los parametros introducidos en nuestra función y como afecta 
+                también nuestro proceso de control.<br><br>
+                            
+              <b>Proporcional (Kp):</b><br>
+                      La parte proporcional consiste en el producto entre la señal de error y la constante proporcional para lograr que el error en estado 
+                      estacionario se aproxime a cero, pero en la mayoría de los casos, estos valores solo serán óptimos en una determinada porción del rango 
+                      total de control, siendo distintos los valores óptimos para cada porción del rango.<br><br>
 
+                      <b>Integral (Ki):</b><br>
+                      El modo de control Integral tiene como propósito disminuir y eliminar el error en estado estacionario, provocado por perturbaciones 
+                      exteriores y los cuales no pueden ser corregidos por el control proporcional. El control integral actúa cuando hay una desviación 
+                      entre la variable y el punto de consigna, integrando esta desviación en el tiempo y sumándola a la acción proporcional.<br><br>
+
+                      <b>Derivativo (Kd):</b><br>
+                      La acción derivativa se manifiesta cuando hay un cambio en el valor absoluto del error; (si el error es constante, solamente actúan 
+                      los modos proporcional e integral). El error es la desviación existente entre el punto de medida y el valor consigna, o "Set Point".
+                      La función de la acción derivativa es mantener el error al mínimo corrigiéndolo proporcionalmente con la misma velocidad que se 
+                      produce; de esta manera evita que el error se incremente.<br><br>
+                    </p>
+                    En la parte inferior se encuentra un boton que nos redireccionará a la página que contiene el Visualizador.<br><br><br><br>
+                </h4>
+                <button class="custom-btn btn-3" onclick="openWin()"><span>Go to APP!</span></button>
             </article>
-            <footer>
-
-            </footer>
         </section>
     </body>
     <script src="script.js"> </script>
